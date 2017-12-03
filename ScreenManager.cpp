@@ -8,16 +8,9 @@
 #include <Arduino.h>
 #include "ScreenManager.hpp"
 
-<<<<<<< HEAD
 ScreenManager::ScreenManager(Screen * s) :
 		m_handler(nullptr) {
 	m_tft = s->getTft();
-=======
-ScreenManager::ScreenManager(Screen * s):
-m_handler(nullptr){
-	m_tft = s->getTft();
-	//m_handler = nullptr;
->>>>>>> d6f1c54e5bed26b66678e168b3471d72d9412558
 	m_screen = s;
 }
 
@@ -38,15 +31,11 @@ void ScreenManager::setHandler(Handler* h) {
 }
 
 Action ScreenManager::getAction() {
-<<<<<<< HEAD
 	if (m_handler != nullptr) {
 		return m_handler->getAction();
 	} else {
 		return Action::NONE;
 	}
-=======
-	return m_handler->getAction();
->>>>>>> d6f1c54e5bed26b66678e168b3471d72d9412558
 }
 
 void ScreenManager::Begin() {

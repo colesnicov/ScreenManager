@@ -21,11 +21,7 @@ Screen::~Screen() {
 void Screen::begin() {
 }
 
-<<<<<<< HEAD
 void Screen::update(Action action) {
-=======
-void Screen::update(Action action = Action::NONE) {
->>>>>>> d6f1c54e5bed26b66678e168b3471d72d9412558
 }
 
 bool Screen::isInvalid() {
