@@ -2,7 +2,7 @@
  * Screen.h
  *
  *  Created on: 12. 9. 2017
- *      Author: denis
+ *  Author: denis
  */
 
 #ifndef SCREEN_H_
@@ -10,8 +10,18 @@
 
 #include <Arduino.h>
 #include "Adafruit_GFX.h"
-//#include <SPI.h>
 #include "common.h"
+
+#ifdef OPERATOR_DELETE
+#ifndef OPERATOR_DELETE_DEFINED
+#define OPERATOR_DELETE_DEFINED
+
+void operator delete(void * p) {
+	free(p);
+}
+
+#endif
+#endif
 
 class Screen {
 public:
@@ -33,8 +43,8 @@ public:
 
 private:
 
-	Adafruit_GFX* m_tft;
 	bool m_invalid;
+	Adafruit_GFX* m_tft;
 };
 
 #endif /* SCREEN_H_ */
