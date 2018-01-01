@@ -1,12 +1,11 @@
-/*
- * Handler.hpp
- *
- *  Created on: 8. 10. 2017
- *      Author: denis
- */
+#pragma once
 
-#ifndef HANDLER_HPP_
-#define HANDLER_HPP_
+/**
+ * File: Handler.hpp
+ * Created on: 8. 10. 2017
+ * Author: Denis Colesnicov <eugustus@gmail.com>
+ * Version: 1.2.1
+ */
 
 #include "common.h"
 
@@ -35,4 +34,3 @@ public:
 	virtual void begin();
 };
 
-#endif /* HANDLER_HPP_ */
