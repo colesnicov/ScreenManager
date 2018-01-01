@@ -26,8 +26,8 @@ public:
      * @param tft Ukazatel na instanci displeje
      */
     Screen(Adafruit_GFX* tft) :
-                m_tft(tft),
-                m_invalid(true)
+                m_invalid(true),
+                m_tft(tft)
     {
     }
 
