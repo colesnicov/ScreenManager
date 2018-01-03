@@ -4,8 +4,7 @@ namespace ui
 {
 
     Button::Button() :
-                TextualElement(),
-                m_text('\0')
+                TextualElement()
     {
     }
 
@@ -19,12 +18,11 @@ namespace ui
             uint16_t colorBg_a, uint16_t colorFr_a, uint16_t colorFg_a,
             uint8_t tpos_div)
     {
-        bool event_handled = false;
 
         if (current && action == Action::ENTER)
         {
             setInvalid();
-            event_handled = true;
+            setActive(true);
         }
         else if ((getLastState() || current)
                 && (action == Action::UP || action == Action::DOWN))
@@ -82,7 +80,7 @@ namespace ui
         }
         setLastState(current);
 
-        return event_handled;
+        return isActive();
     }
 
 } /* namespace ui */
