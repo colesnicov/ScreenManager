@@ -4,7 +4,7 @@
  * File: ToggleButton.hpp
  * Created on: 27. 12. 2017
  * Author: Denis Colesnicov <eugustus@gmail.com>
- * Version: 1.2.1
+ * Version: 1.2.2
  */
 
 #include <Element.hpp>
@@ -14,7 +14,7 @@ namespace ui
 {
 
     /*
-     * Prepinaci tlacitko
+     * Prepinaci tlacitko "ON|OFF"
      */
     class ToggleButton: public Element
     {
@@ -34,6 +34,8 @@ namespace ui
          * @param colorFr_a Barva ohraniceni prvku kdyz prvek ma zamereni (focus)
          * @param colorFg_a Barva textu prvku kdyz prvek ma zamereni (focus)
          * @param tpos_div Delic pro vertikalni pozicovani textu. Cim vetsi cislo, tim vic nahore.
+         *
+         * @return bool TRUE pokud je prvek aktivni nebo zpracoval udalost, jinak False
          */
         bool Draw(Adafruit_GFX* tft, bool current, Action action,
                 uint16_t colorBg, uint16_t colorFr, uint16_t colorFg,

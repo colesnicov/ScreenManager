@@ -20,12 +20,11 @@ namespace ui
             uint16_t colorBg_a, uint16_t colorFr_a, uint16_t colorFg_a,
             uint8_t tpos_div)
     {
-        bool event_handled = false;
 
         if (current && action == Action::ENTER)
         {
             setInvalid();
-            event_handled = true;
+            setActive(true);
             m_isOn = !m_isOn;
         }
         else if ((getLastState() || current)
@@ -99,7 +98,7 @@ namespace ui
         }
         setLastState(current);
 
-        return event_handled;
+        return isActive();
     }
 
 }
