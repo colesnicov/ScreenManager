@@ -7,7 +7,7 @@
  * Version: 1.2.1
  */
 
-#include <Element.hpp>
+#include <TextualElement.hpp>
 
 namespace ui
 {
@@ -15,7 +15,7 @@ namespace ui
     /*
      * Tlacitko
      */
-    class Button: public Element
+    class Button: public TextualElement
     {
     public:
         Button();

@@ -4,7 +4,7 @@ namespace ui
 {
 
     Button::Button() :
-                Element(),
+                TextualElement(),
                 m_text('\0')
     {
     }

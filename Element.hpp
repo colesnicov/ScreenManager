@@ -68,7 +68,7 @@ public:
     }
 
     /**
-     * Nastavi posici prvku
+     * Nastavi pozici prvku
      *
      * @param x Horizontalni
      * @param y Vertikalni
