@@ -3,7 +3,6 @@
 /**
  * File: TextualElement.hpp
  * Created on: 3. 1. 2018
- * Author: denis
  * Author: Denis Colesnicov <eugustus@gmail.com>
  * Version: 1.2.1
  */
