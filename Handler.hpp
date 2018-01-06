@@ -9,6 +9,9 @@
 
 #include "common.h"
 
+/**
+ * Bazova trida pro zpracovani udlosti. Musi se dedit!
+ */
 class Handler {
 public:
 
