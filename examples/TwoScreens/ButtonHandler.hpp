@@ -41,4 +41,3 @@ private:
 	Button m_upButton;
 };
 
-#endif /* BUTTONHANDLER_H_ */
