@@ -22,7 +22,7 @@ namespace ui
         if (current && action == Action::ENTER)
         {
             setInvalid();
-            setActive(true);
+            setActive(!isActive());
         }
         else if ((getLastState() || current)
                 && (action == Action::UP || action == Action::DOWN))
