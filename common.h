@@ -4,7 +4,7 @@
  * File: common.h
  * Created on: 10. 9. 2017
  * Author: Denis Colesnicov <eugustus@gmail.com>
- * Version: 1.2.1
+ * Version: 1.2.2
  */
 
 
@@ -42,3 +42,25 @@ void operator delete(void * p)
 #endif
 #endif
 
+/**
+ * Bezpecne kopirovani retezce o dane delce
+ *
+ * @note Pokud je zdrojovy retezec kratsi nez pocet pozadovanych znaku,
+ *       zkopiruje jenom retezec o delce zdrojoveho!
+ *
+ * @param *dst Cilovy retezec
+ * @param *src Zdrojovy retezec
+ * @param size pocet znaku ke zkopirovani
+ *
+ * @note Zdroj: https://stackoverflow.com/a/38035721
+ */
+size_t strlcpy(char *dst, const char *src, size_t size)
+{
+    const size_t len = strlen(src);
+    if (size != 0)
+    {
+        memcpy(dst, src, (len > size - 1) ? size - 1 : len);
+        dst[size - 1] = 0;
+    }
+    return len;
+}
