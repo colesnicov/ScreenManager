@@ -7,7 +7,6 @@
  * Version: 1.2.2
  */
 
-
 /**
  * Vycet akci tlacitek
  */
@@ -52,15 +51,27 @@ void operator delete(void * p)
  * @param *src Zdrojovy retezec
  * @param size pocet znaku ke zkopirovani
  *
+ * @return uint32_t Pocet zkopirovanych znaku
+ *
  * @note Zdroj: https://stackoverflow.com/a/38035721
  */
-size_t strlcpy(char *dst, const char *src, size_t size)
+/*
+uint32_t strlcpy(char *dst, const char *src, size_t size)
 {
-    const size_t len = strlen(src);
+    const uint32_t len = strlen(src), char_cp = 0;
     if (size != 0)
     {
-        memcpy(dst, src, (len > size - 1) ? size - 1 : len);
+        if (len > size - 1)
+        {
+            char_cp = size - 1;
+        }
+        else
+        {
+            char_cp = len;
+        }
+        memcpy(dst, src, char_cp);
         dst[size - 1] = 0;
     }
-    return len;
+    return char_cp;
 }
+*/
