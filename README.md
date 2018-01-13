@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> cdeefaa1cebda5084861364cb4f818c2a650b4c3
 #ScreenManager
 
 **!!BETA VERSION!!**
