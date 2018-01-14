@@ -12,8 +12,6 @@
 #include <TextualElement.hpp>
 #include <string.h>
 
-#define PADDING 5
-
 namespace ui
 {
 
@@ -30,22 +28,23 @@ namespace ui
         /**
          * Vykresli prvek
          *
-         * @param tft Ukazatel na instanci displeje
-         * @param current Indikator, zda prvek ma zamereni (focus)
-         * @param action Akce uzivatele
-         * @param colorBg Barva pozadi prvku
-         * @param colorFr Barva ohraniceni prvku
-         * @param colorFg Barva textu prvku
+         * @param tft       Ukazatel na instanci displeje
+         * @param current   Indikator, zda prvek ma zamereni (focus)
+         * @param action    Akce uzivatele
+         * @param colorBg   Barva pozadi prvku
+         * @param colorFr   Barva ohraniceni prvku
+         * @param colorFg   Barva textu prvku
          * @param colorBg_a Barva pozadi prvku kdyz prvek ma zamereni (focus)
          * @param colorFr_a Barva ohraniceni prvku kdyz prvek ma zamereni (focus)
          * @param colorFg_a Barva textu prvku kdyz prvek ma zamereni (focus)
-         * @param tpos_div Delic pro vertikalni pozicovani textu. Cim vetsi cislo, tim vic nahore.
+         * @param tpos_div  Odsazeni textu od okraju v pixelech
          *
          * @return bool TRUE pokud je prvek aktivni nebo zpracoval udalost, jinak False
          *
          * @todo Buffer overflow - Pri vypisu textu, saha mimo svuj pmetovy zasobnik a
          *       vypisuje hodnoty pameti z 'ciziho' sektoru
          * @todo Pri prvnim aktivovani prvku se text rozhodi!
+         * @todo Scroller ma bud spatne rozmery nebo ma spatnou velikost kroku pri posuvu!
          */
         bool Draw(Adafruit_GFX *tft, bool current, Action action,
                 uint16_t colorBg, uint16_t colorFr, uint16_t colorFg,
@@ -62,9 +61,12 @@ namespace ui
         /**
          * Prepocita pocet radku a optimalni pocet znaku na radek
          *
-         * @param char_width Sirka znaku
+         * @note Vypocty provadi na zaklade rozmeru velkeho pismena 'W'!
+         *
+         * @param *tft      Ukazatel na objekt obrazovky
+         * @param tpos_div  Odsazeni textu od okraju v px
          */
-        void recalculate(uint16_t char_width);
+        void recalculate(Adafruit_GFX *tft, uint8_t tpos_div);
 
     private:
 
@@ -74,7 +76,7 @@ namespace ui
         bool m_recalculate = true;
         uint16_t m_visibled_rows;
 
-        uint8_t m_lineHeight;
+        uint16_t m_lineHeight;
         uint16_t m_start_row = 0;
 
     };

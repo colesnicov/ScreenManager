@@ -12,10 +12,7 @@ namespace ui
 
     ScrollableText::ScrollableText() :
                 TextualElement(),
-                //m_padding(5),
                 m_rowsCount(0),
-                //m_rowsLength(),
-                //m_start_row(0),
                 m_visibled_rows(0),
                 m_lineHeight(0)
     {
@@ -32,16 +29,7 @@ namespace ui
             uint16_t colorBg_a, uint16_t colorFr_a, uint16_t colorFg_a,
             uint8_t tpos_div)
     {
-
-        uint16_t text_width, text_height;
-
-        {
-            int16_t tmp;
-            tft->getTextBounds((char*) m_text, m_pos_x, m_pos_y, &tmp, &tmp,
-                    &text_width, &text_height);
-        }
-
-        recalculate(text_width);
+        recalculate(tft, tpos_div);
 
         if (current && action == Action::ENTER)
         {
@@ -74,15 +62,15 @@ namespace ui
 
             uint16_t scrollHeight, scroll_row = 0;
 
-            if (m_height - (PADDING * 2) > (text_height * m_rowsCount))
+            if (m_height - (tpos_div * 2) > (m_lineHeight * m_rowsCount))
             {
                 scrollHeight = m_height;
             }
             else
             {
                 scrollHeight = ((float) (m_height - 16)
-                        / ((text_height + 2) * m_rowsCount)) * 100;
-                scroll_row = ((float) text_height / (m_height + 10)) * 100;
+                        / ((m_lineHeight) * m_rowsCount)) * 100;
+                scroll_row = ((float) m_lineHeight / (m_height + 10)) * 100;
 
             }
 
@@ -92,14 +80,11 @@ namespace ui
 
             tft->setTextWrap(false);
 
-            text_height += 2;
-            uint16_t visibled_rows = ((m_height - (PADDING * 2)) / text_height); //-1;
+            uint16_t visibled_rows =
+                    ((m_height - (tpos_div * 2)) / m_lineHeight); //-1;
 
-            uint16_t label_x;
-            uint16_t label_y;
-
-            label_y = m_pos_y + text_height;
-            label_x = m_pos_x + PADDING;
+            uint16_t label_x = m_pos_x + tpos_div;
+            uint16_t label_y = m_pos_y + tpos_div;
 
             tft->setTextColor((isActive()) ? colorFg_a : colorFg);
 
@@ -125,7 +110,7 @@ namespace ui
 
             for (int factor = 0; factor < steps; i++, factor++)
             {
-                tft->setCursor(label_x, label_y + (text_height * factor));
+                tft->setCursor(label_x, label_y + (m_lineHeight * factor));
 
                 char row[m_rowsLength[i] + 1];
                 strlcpy(row, m_text + offset, m_rowsLength[i] + 1);
@@ -140,22 +125,26 @@ namespace ui
 
     void ScrollableText::setText(char* text)
     {
-        {
-            TextualElement::setText(text);
-            m_recalculate = true;
-        }
+        TextualElement::setText(text);
+        m_recalculate = true;
     }
 
-    void ScrollableText::recalculate(uint16_t char_width)
+    void ScrollableText::recalculate(Adafruit_GFX *tft, uint8_t tpos_div)
     {
         if (m_recalculate)
         {
+            uint16_t text_width;
 
+            {
+                int16_t tmp;
+                tft->getTextBounds((char*) "W", m_pos_x, m_pos_y, &tmp, &tmp,
+                        &text_width, &m_lineHeight);
+                m_lineHeight += 2; // Pridame rozestup 2px mezi radkami
+            }
             uint32_t text_length;
             uint16_t char_per_row;
             text_length = strlen(m_text);
-            char_per_row = ((m_width - 12 - PADDING)
-                    / (char_width / text_length));
+            char_per_row = ((m_width - 12 - tpos_div) / text_width);
             uint32_t globalI = 0;
             while (text_length > globalI)
             {
