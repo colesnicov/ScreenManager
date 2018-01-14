@@ -34,30 +34,44 @@ namespace ui
         {
             if (action == Action::RIGHT || action == Action::UP)
             {
-                m_value++;
+                *m_value += 1;
                 setInvalid();
             }
             else if (action == Action::LEFT || action == Action::DOWN)
             {
-                m_value--;
+                *m_value -= 1;
                 setInvalid();
             }
         }
 
         if (isInvalid())
         {
-            tft->setTextColor((current) ? colorFg_a : colorFg);
+            Serial.println("invalid");
 
             tft->fillRect(m_pos_x, m_pos_y, m_width, m_height,
                     (current) ? colorBg_a : colorBg);
+            tft->drawRect(m_pos_x, m_pos_y, m_width, m_height,
+                    (current) ? colorFr_a : colorFr);
             tft->drawFastVLine(m_pos_x + m_height, m_pos_y + 1, m_height - 2,
                     (current) ? colorFr_a : colorFr);
             tft->drawFastVLine(m_pos_x + m_width - m_height, m_pos_y + 1,
                     m_height - 2, (current) ? colorFr_a : colorFr);
 
-            uint8_t val_len = intLength(m_value) + 1;
+            // -
+            Serial.println("invalid 1");
+            tft->fillRect(m_pos_x + 3, (m_pos_y + (m_height / 2) - 1),
+                    m_height - 6, 3, (isActive()) ? colorFr_a : colorFr);
+
+            // +
+            tft->fillRect(m_pos_x + m_width + 3 - m_height,
+                    (m_pos_y + (m_height / 2) - 1), m_height - 6, 3,
+                    (isActive()) ? colorFr_a : colorFr);
+            tft->fillRect(m_pos_x + m_width - (m_height / 2) - 2, m_pos_y + 3,
+                    3, m_height - 6, (isActive()) ? colorFr_a : colorFr);
+
+            uint8_t val_len = intLength(*m_value) + 1;
             char val[val_len];
-            snprintf(val, val_len, m_text, m_value);
+            snprintf(val, strlen(m_text) + val_len, m_text, *m_value);
 
             uint16_t text_width, text_height;
 
@@ -67,6 +81,7 @@ namespace ui
                         &text_width, &text_height);
             }
 
+            Serial.println("invalid 2");
             uint8_t box_height_half = m_height / 2;
             uint8_t text_height_half = text_height / 2;
             uint16_t label_y;
@@ -87,26 +102,18 @@ namespace ui
                 label_y = m_pos_y + m_height - text_height_half;
             }
 
+            tft->setTextColor((isActive()) ? colorFg_a : colorFg);
             tft->setCursor((m_pos_x + (m_width / 2)) - (text_width / 2),
                     label_y);
-            tft->print(m_value);
+            tft->print(val);
+            Serial.println(val);
 
-            {
-
-                tft->fillRect(m_pos_x + 3, (m_pos_y + (m_height / 2) - 1),
-                        m_height - 6, 3, (current) ? colorFg_a : colorFg);
-
-                tft->fillRect(m_pos_x + m_width + 3 - m_height,
-                        (m_pos_y + (m_height / 2) - 1), m_height - 6, 3,
-                        (current) ? colorFg_a : colorFg);
-                tft->fillRect(m_pos_x + m_width - (m_height / 2) - 2,
-                        m_pos_y + 3, 3, m_height - 6,
-                        (current) ? colorFg_a : colorFg);
-            }
             setValid();
         }
 
+        setLastState(current);
         return isActive();
     }
 
 } /* namespace ui */
+

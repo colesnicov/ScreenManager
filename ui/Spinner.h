@@ -46,11 +46,11 @@ namespace ui
                 uint8_t tpos_div = 0);
 
         /**
-         * Natavi hodnotu referenci
+         * Nastavi hodnotu referenci
          *
-         * @param &value Reference na hodnotu
+         * @param *value Ukazatel na hodnotu
          */
-        void setValue(int &value)
+        void setValue(int *value)
         {
             m_value = value;
         }
@@ -103,7 +103,7 @@ namespace ui
         }
 
     private:
-        int m_value;
+        int* m_value;
     };
 
 } /* namespace ui */
