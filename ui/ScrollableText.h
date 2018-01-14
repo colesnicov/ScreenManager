@@ -10,6 +10,7 @@
 #pragma once
 
 #include <TextualElement.hpp>
+#include <string.h>
 
 #define PADDING 5
 

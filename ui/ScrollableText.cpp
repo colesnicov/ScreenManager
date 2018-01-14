@@ -134,7 +134,7 @@ namespace ui
             }
             setValid();
         }
-        setLastState(isActive());
+        setLastState(current);
         return isActive();
     }
 
