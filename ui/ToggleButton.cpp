@@ -21,10 +21,12 @@ namespace ui
             uint8_t tpos_div)
     {
 
+        bool handled = false;
         if (current && action == Action::ENTER)
         {
             setInvalid();
             setActive(true);
+            handled = true;
             m_isOn = !m_isOn;
         }
         else if ((getLastState() || current)
@@ -98,7 +100,8 @@ namespace ui
         }
         setLastState(current);
 
-        return isActive();
+        return handled;
+        //return isActive();
     }
 
 }

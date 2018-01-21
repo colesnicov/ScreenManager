@@ -55,31 +55,40 @@ namespace ui
         /**
          * Nastavi tlacitko do stavu "ON" nebo "OFF"
          *
+         * @note zpusobi invalidaci prvku?
+         *
          * @param on Stav tlacitka. TRUE = "ON", FALSE = "OFF"
          */
         inline void setOn(bool on)
         {
             m_isOn = on;
+            //setInvalid();
         }
 
         /**
          * Nastavi popisek pro stav "ON"
+         *
+         * @note zpusobi invalidaci prvku?
          *
          * @param text Popisek pro stav "ON"
          */
         inline void setTextOn(const char *text)
         {
             m_text_on = text;
+            //setInvalid();
         }
 
         /**
          * Nastavi popisek pro stav "OFF"
+         *
+         * @note zpusobi invalidaci prvku?
          *
          * @param text Popisek pro stav "OFF"
          */
         inline void setTextOff(const char *text)
         {
             m_text_off = text;
+            //setInvalid();
         }
 
     private:
