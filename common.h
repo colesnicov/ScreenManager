@@ -56,22 +56,22 @@ void operator delete(void * p)
  * @note Zdroj: https://stackoverflow.com/a/38035721
  */
 /*
-uint32_t strlcpy(char *dst, const char *src, size_t size)
-{
-    const uint32_t len = strlen(src), char_cp = 0;
-    if (size != 0)
-    {
-        if (len > size - 1)
-        {
-            char_cp = size - 1;
-        }
-        else
-        {
-            char_cp = len;
-        }
-        memcpy(dst, src, char_cp);
-        dst[size - 1] = 0;
-    }
-    return char_cp;
-}
-*/
+ uint32_t strlcpy(char *dst, const char *src, size_t size)
+ {
+ const uint32_t len = strlen(src), char_cp = 0;
+ if (size != 0)
+ {
+ if (len > size - 1)
+ {
+ char_cp = size - 1;
+ }
+ else
+ {
+ char_cp = len;
+ }
+ memcpy(dst, src, char_cp);
+ dst[size - 1] = 0;
+ }
+ return char_cp;
+ }
+ */
