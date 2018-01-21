@@ -62,7 +62,7 @@ namespace ui
          *
          * @return uint8_t Delka cisla
          */
-        uint8_t intLength(int16_t x)
+        short intLength(int x)
         {
             if (x >= 1000)
             {
