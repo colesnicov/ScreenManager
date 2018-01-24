@@ -50,7 +50,7 @@ namespace ui
             uint8_t label_x = m_pos_x;
             if (box_width_half > text_width_half)
             {
-                label_x = box_width_half - text_width_half;
+                label_x = m_pos_x + (box_width_half - text_width_half);
             }
 
             uint8_t box_height_half = m_height / 2;
