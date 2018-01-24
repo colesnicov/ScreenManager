@@ -31,6 +31,8 @@ public:
 	 */
 	virtual Action getAction();
 
+	virtual void setAction(Action) = 0;
+
 	/**
 	 * Inicializace
 	 */
