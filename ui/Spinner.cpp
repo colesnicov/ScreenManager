@@ -46,7 +46,6 @@ namespace ui
 
         if (isInvalid())
         {
-            Serial.println("invalid");
 
             tft->fillRect(m_pos_x, m_pos_y, m_width, m_height,
                     (current) ? colorBg_a : colorBg);
@@ -57,8 +56,6 @@ namespace ui
             tft->drawFastVLine(m_pos_x + m_width - m_height, m_pos_y + 1,
                     m_height - 2, (current) ? colorFr_a : colorFr);
 
-            // -
-            Serial.println("invalid 1");
             tft->fillRect(m_pos_x + 3, (m_pos_y + (m_height / 2) - 1),
                     m_height - 6, 3, (isActive()) ? colorFr_a : colorFr);
 
@@ -81,7 +78,6 @@ namespace ui
                         &text_width, &text_height);
             }
 
-            Serial.println("invalid 2");
             uint8_t box_height_half = m_height / 2;
             uint8_t text_height_half = text_height / 2;
             uint16_t label_y;
@@ -106,7 +102,6 @@ namespace ui
             tft->setCursor((m_pos_x + (m_width / 2)) - (text_width / 2),
                     label_y);
             tft->print(val);
-            Serial.println(val);
 
             setValid();
         }
