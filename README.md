@@ -15,4 +15,15 @@ _Depends on **Adafruit_GFX**_
 Testovano na **Arduino UNO** a **DUE**
 
 _Zavisi na **Adafruit_GFX**_
- 
+
+
+**Screens**
+
+Buttons:
+![Buttons](img/buttons.jpg)
+
+Spinner:
+![Spinner](img/spinner.jpg)
+
+Toggle
+![ToggleButton](img/toggle.jpg)
