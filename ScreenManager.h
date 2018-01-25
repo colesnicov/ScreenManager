@@ -15,5 +15,5 @@
 #include <Handler.hpp>
 #include <ui/Button.hpp>
 #include <ui/ScrollableText.h>
-#include <ui/Spinner.h>
+#include <ui/SpinnerInt.h>
 #include <ui/ToggleButton.h>

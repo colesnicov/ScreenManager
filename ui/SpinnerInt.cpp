@@ -1,4 +1,4 @@
-#include <ui/Spinner.h>
+#include <ui/SpinnerInt.h>
 
 namespace ui
 {
