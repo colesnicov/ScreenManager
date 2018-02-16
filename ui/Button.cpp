@@ -24,7 +24,7 @@ namespace ui
             setInvalid();
             setActive(!isActive());
         }
-        else if ((getLastState() || current)
+        else if ((getLastState() != current)
                 && (action == Action::UP || action == Action::DOWN))
         {
             setInvalid();

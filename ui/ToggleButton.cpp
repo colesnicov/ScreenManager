@@ -74,9 +74,8 @@ namespace ui
                     (current) ? colorBg_a : colorBg);
 
             // Indicator
-            tft->fillRect(m_pos_x + tri_width + 2, m_pos_y + 1,
-                    (m_width / 4) - 2, m_height - 2,
-                    (m_isOn) ? 0x0400 : 0xF800);
+            tft->fillRect(m_pos_x + tri_width + 2, m_pos_y + 1, m_width / 4,
+                    m_height - 2, (m_isOn) ? 0x0400 : 0xF800);
             // Border
             tft->fillRect(m_pos_x + tri_width, m_pos_y + 1, 2, m_height - 2,
                     (current) ? colorFr_a : colorFr);
