@@ -102,8 +102,19 @@ namespace ui
             }
         }
 
+        /**
+         * Volat pouze jednou!!
+         */
+        bool isChanged()
+        {
+            bool c = m_changed;
+            m_changed = !m_changed;
+            return c;
+        }
+
     private:
         int* m_value;
+        bool m_changed;
     };
 
 } /* namespace ui */

@@ -4,7 +4,8 @@ namespace ui
 {
 
     SpinnerInt::SpinnerInt() :
-                m_value(0)
+                m_value(0),
+                m_changed(false)
     {
 
     }
@@ -24,7 +25,7 @@ namespace ui
             setInvalid();
             setActive(!isActive());
         }
-        else if ((getLastState() || current)
+        else if ((getLastState() != current)
                 && (action == Action::UP || action == Action::DOWN))
         {
             setInvalid();
@@ -32,14 +33,16 @@ namespace ui
 
         if (current && isActive())
         {
-            if (action == Action::RIGHT || action == Action::UP)
+            if (action == Action::RIGHT)
             {
                 *m_value += 1;
+                m_changed = true;
                 setInvalid();
             }
-            else if (action == Action::LEFT || action == Action::DOWN)
+            else if (action == Action::LEFT)
             {
                 *m_value -= 1;
+                m_changed = true;
                 setInvalid();
             }
         }
