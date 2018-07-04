@@ -35,26 +35,64 @@ public:
      * Vykresli prvek
      * Tato metoda musi se implementovat kazdym prvkem
      *
-     * @param *tft Ukazatel na instanci displeje
-     * @param current Priznak jestli je tento prvek "pod kurzorem"
-     * @param action Aktulni akce tlacitek
-     * @param colorBg Barva pozadi prvku
-     * @param colorFr Barva ohraniceni prvku
-     * @param colorFg Barva textu prvku
-     * @param colorBg_a Barva pozadi prvku kdyz prvek ma zamereni (focus)
-     * @param colorFr_a Barva ohraniceni prvku kdyz prvek ma zamereni (focus)
-     * @param colorFg_a Barva textu prvku kdyz prvek ma zamereni (focus)
-     * @param tpos_div Delic pro korekci vertikalni pozice textu, cim vetsi cislo tim vic nahore
+     * @param Adafruit_GFX* Ukazatel na instanci displeje
+     * @param bool Priznak jestli je tento prvek "pod kurzorem"
+     * @param Action Aktulni akce tlacitek
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint8_t Delic pro korekci pozice
      *
      * @return bool TRUE pokud je prvek aktivni nebo zpracoval udalost, jinak False
      */
-    virtual bool Draw(Adafruit_GFX *tft, bool current, Action action,
-            uint16_t colorBg, uint16_t colorFr, uint16_t colorFg,
-            uint16_t colorBg_a, uint16_t colorFr_a, uint16_t colorFg_a,
-            uint8_t tpos_div = 0)
+    virtual bool Draw(Adafruit_GFX*, bool, Action, uint16_t, uint16_t, uint16_t,
+            uint16_t, uint16_t, uint16_t, uint8_t)
     {
         return false;
     }
+    ;
+
+    /**
+     * Vykresli prvek
+     * Tato metoda musi se implementovat kazdym prvkem
+     *
+     * @param Adafruit_GFX* Ukazatel na instanci displeje
+     * @param bool Priznak jestli je tento prvek "pod kurzorem"
+     * @param Action Aktulni akce tlacitek
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint8_t Delic pro korekci pozice
+     *
+     * @return bool TRUE pokud je prvek aktivni nebo zpracoval udalost, jinak False
+     */
+    virtual bool Draw(Adafruit_GFX*, bool, Action, uint16_t, uint16_t, uint16_t,
+            uint8_t)
+    {
+        return false;
+    }
+    ;
+
+    /**
+     * Vykresli prvek
+     * Tato metoda musi se implementovat kazdym prvkem
+     *
+     * @param Adafruit_GFX* Ukazatel na instanci displeje
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint16_t Barva
+     * @param uint8_t Delic pro korekci pozice
+     *
+     * @return bool TRUE pokud je prvek aktivni nebo zpracoval udalost, jinak False
+     */
+    virtual bool Draw(Adafruit_GFX*, uint16_t, uint16_t, uint16_t, uint8_t)
+    {
+        return false;
+    }
+    ;
 
     /**
      * Nastavi velikost prvku

@@ -10,7 +10,6 @@
  * Todo: Less tested! Please issue any bug :-)
  */
 
-
 #define COLOR_BLACK               0X0000
 #define COLOR_BROWN               0XA145
 #define COLOR_MAROON              0X8000
@@ -18,6 +17,7 @@
 #define COLOR_FIREBRICK           0XB104
 #define COLOR_CRIMSON             0XD8A7
 #define COLOR_RED                 0XF800
+#define COLOR_GREEN               0X07E0 // #00FF00
 #define COLOR_TOMATO              0XFB08
 #define COLOR_CORAL               0XFBEA
 #define COLOR_INDIAN_RED          0XCAEB
@@ -75,6 +75,9 @@
 #define COLOR_LAVENDER            0XE73E
 #define COLOR_DIM_GREY            0X1BAD
 #define COLOR_GRAY                0X8410
+#define COLOR_GRAY11              0x0618 // #1c1c1c
+#define COLOR_GRAY60              0x9CD3 // #999999
+#define COLOR_GRAY80              0xCE79 // #cccccc
 #define COLOR_DARK_GRAY           0XAD55
 #define COLOR_LIGHT_GRAYY         0XD69A
 #define COLOR_WHITE_SMOKE         0XF7BE
@@ -1381,5 +1384,4 @@
 #define COLOR_ZAFFRE  0X00B5
 #define COLOR_ZINNWALDITE_BROWN  0X28A1
 #define COLOR_ZOMP  0X3D31
-
 
